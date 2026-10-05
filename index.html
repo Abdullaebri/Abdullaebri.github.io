@@ -566,7 +566,9 @@ em.g .sx{background:linear-gradient(100deg,var(--champ),var(--gold) 60%,var(--br
 .bike .lamp{position:absolute;left:11.5%;top:52%;width:9%;aspect-ratio:1;margin:-4.5% 0 0 -4.5%;border-radius:50%;background:radial-gradient(circle,#fff,rgba(248,230,184,.85) 35%,transparent 70%);animation:beam 2.6s ease-in-out infinite;mix-blend-mode:screen}
 @keyframes beam{50%{opacity:.55}}
 
-.cyc{position:absolute;left:50%;bottom:15%;width:62%;margin-left:-31%;overflow:visible;opacity:var(--mix,0);transform:translateX(calc((1 - var(--mix,0))*40%)) }
+.cyc{position:absolute;left:50%;bottom:15%;width:62%;margin-left:-31%;overflow:visible;opacity:var(--cy,0);transform:translateX(calc((1 - var(--cy,0))*40%)) scaleX(-1)}
+.hor{--cy:var(--ho,0);bottom:13%;width:58%;margin-left:-29%}
+.hor use{animation:idle .7s ease-in-out infinite}
 .cyc .glow{stroke:var(--gold);stroke-width:6;opacity:.85}
 .cyc .core{stroke:var(--champ);stroke-width:2.2;animation:flick 6s linear infinite}
 .cyc .thin{stroke-width:1}
@@ -994,8 +996,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
   <div class="wrap ride">
     <div>
       <p class="eye rv">Off the clock</p>
-      <h2 class="split">Two wheels, <em class="g">full focus.</em></h2>
-      <p class="lead rv">Away from the screen I ride, with an engine and without one: my motorcycle and my road bike. Both ask for the same things good programming does: stay calm, read what is ahead and respect the details. Keep scrolling to switch.</p>
+      <h2 class="split">Always riding, <em class="g">full focus.</em></h2>
+      <p class="lead rv">Away from the screen I ride: my motorcycle, my road bike and horses. All three ask for the same things good programming does: stay calm, read what is ahead and respect the details. Keep scrolling to switch.</p>
     </div>
     <div class="garage" data-zoom>
       <span class="streak" style="top:22%;--s:1.5s"></span><span class="streak" style="top:36%;--s:2.1s;--dl:-.7s"></span><span class="streak" style="top:50%;--s:1.2s;--dl:-.3s"></span><span class="streak" style="top:64%;--s:1.8s;--dl:-1.1s"></span>
@@ -1011,6 +1013,18 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
         <path d="M164 96L214 138L196 214" class="legA"/><path d="M168 98L204 122L170 166" class="thin"/></g>
         </g></defs>
         <use href="#csrc2" class="glow" filter="url(#cgl)"/><use href="#csrc2" class="core"/>
+      </svg>
+      <svg class="cyc hor" id="hor" viewBox="0 0 400 280" role="img" aria-label="Gold neon line drawing of a rider on a horse">
+        <defs><g id="hsrc" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M118 132C150 118 228 118 262 130C272 150 268 172 256 180C220 192 160 192 128 180C112 170 108 148 118 132Z"/>
+        <path d="M250 128C262 100 280 78 300 66L312 52L316 66C330 76 342 92 346 104C348 112 340 116 332 112L308 100C296 112 284 130 268 150"/>
+        <circle cx="318" cy="82" r="2"/><path class="thin" d="M262 122C270 100 284 82 298 70M226 100L330 108"/>
+        <path d="M246 182L252 222L244 258H256M228 186L214 220L226 252H238M138 180L124 214L136 256H148M152 186L168 218L156 256H168"/>
+        <path d="M116 136C96 140 88 170 96 200"/><path d="M176 120C186 112 206 112 216 120"/>
+        <circle cx="204" cy="52" r="13"/><path d="M191 48C193 34 215 34 217 48H189"/>
+        <path d="M196 118C192 96 196 78 202 66M200 76L226 100L256 118M196 118L214 160L206 176H220"/>
+        </g></defs>
+        <use href="#hsrc" class="glow" filter="url(#cgl)"/><use href="#hsrc" class="core"/>
       </svg>
       <div class="rhud" id="rhud">MOTORCYCLE</div>
       <div class="bikew" id="bikew"><div class="bike">
@@ -1178,7 +1192,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
         var r=el.getBoundingClientRect(); if(r.bottom<0||r.top>vh) return;
         var c=(r.top+r.height/2-vh/2)/vh; el.firstElementChild.style.setProperty('--z',(1.06+clamp(-c,-.3,.8)*.2).toFixed(4));
       });
-      var kr=bikew.getBoundingClientRect(); if(kr.bottom>-200&&kr.top<vh+200){var kc=(kr.top+kr.height/2-vh/2)/vh; bikew.style.transform='translateX('+(clamp(kc,-1,1)*-22).toFixed(2)+'%)'; var gm=clamp((.02-kc)/.22,0,1), gar=bikew.parentNode; gar.style.setProperty('--mix',gm.toFixed(3)); var rh=gar.querySelector('#rhud'), lab=gm>.5?'ROAD CYCLING':'MOTORCYCLE'; if(rh.textContent!==lab) rh.textContent=lab}
+      var kr=bikew.getBoundingClientRect(); if(kr.bottom>-200&&kr.top<vh+200){var kc=(kr.top+kr.height/2-vh/2)/vh; bikew.style.transform='translateX('+(clamp(kc,-1,1)*-22).toFixed(2)+'%)'; var gt=clamp((.24-kc)/.22,0,2), gar=bikew.parentNode; gar.style.setProperty('--mix',clamp(gt,0,1).toFixed(3)); gar.style.setProperty('--cy',clamp(1-Math.abs(gt-1),0,1).toFixed(3)); gar.style.setProperty('--ho',clamp(gt-1,0,1).toFixed(3)); var rh=gar.querySelector('#rhud'), lab=gt>1.5?'HORSE RIDING':gt>.5?'ROAD CYCLING':'MOTORCYCLE'; if(rh.textContent!==lab) rh.textContent=lab}
       draws.forEach(function(el){var r=el.getBoundingClientRect(); if(r.bottom<-100||r.top>vh+100) return; el.style.setProperty('--dr',clamp((.92-r.top/vh)/.55,0,1).toFixed(3))});
       if(big){var br=big.getBoundingClientRect();
       if(br.bottom>-100&&br.top<vh+100){var p=1-(br.top+br.height/2)/vh; big.style.transform='scale('+(.6+clamp(p,0,1.2)*.6).toFixed(4)+')'; big.style.opacity=clamp(1.15-Math.abs(p-.5)*2.1,0,1).toFixed(3)}}
