@@ -638,6 +638,10 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
   .brand{letter-spacing:.08em}
 }
 
+.hinfo{display:grid!important;grid-template-columns:1fr!important;justify-items:center;text-align:center;gap:18px!important;margin-top:0!important}
+.hinfo .role{margin:0;min-height:1.7em}
+.hinfo .scroll{display:flex!important;margin:0}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
@@ -674,18 +678,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
     <div class="hfade"></div>
   </div>
   <div class="wrap hinfo" id="hinfo">
-    <div class="hl">
-      <div class="status"><i></i>AVAILABLE FOR HIRE · ABU DHABI</div>
-      <p class="role" aria-label="Web and app developer building web apps, desktop tools and AI-assisted software">Web &amp; app developer building <b id="typed">web apps</b><span class="caret"></span></p>
-      <p class="lead">Abdulla Sulaiman Alebri. Information Technology graduate from Zayed University. I design, code and ship software that removes friction from people's work.</p>
-    </div>
-    <div class="hr">
-      <div class="cta">
-        <a class="btn pri" href="#apps" data-mag><span>See my work</span><span aria-hidden="true">↓</span></a>
-        <a class="btn" href="#value" data-mag><span>Why hire me</span></a>
-      </div>
-      <div class="scroll" aria-hidden="true"><i></i>SCROLL</div>
-    </div>
+    <p class="role" aria-label="Web and app developer building web apps, desktop tools and AI-assisted software">Web &amp; app developer building <b id="typed">web apps</b><span class="caret"></span></p>
+    <div class="scroll" aria-hidden="true"><i></i>SCROLL</div>
   </div>
 </section>
 
