@@ -625,7 +625,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
   <div class="in">
     <a class="brand" href="#top"><i>AA</i>ALEBRI</a>
     <nav class="links" aria-label="Sections">
-      <a href="#about">About</a><a href="#apps">Work</a><a href="#ai">AI</a><a href="#lab">Skills</a><a href="#vision">Vision</a><a href="#value">Why me</a><a href="#where">Location</a>
+      <a href="#about">About</a><a href="#apps">Work</a><a href="#lab">Skills</a><a href="#vision">Vision</a><a href="#value">Why me</a><a href="#where">Location</a>
     </nav>
     <a class="btn sm pri" href="#connect" data-mag><span>Connect</span></a>
   </div>
@@ -776,34 +776,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
   </div>
 </section>
 
-
-<section id="ai">
-  <div class="bigword" id="bigword" aria-hidden="true">WHAT'S NEXT</div>
-  <div class="wrap ai">
-    <div>
-      <p class="eye rv">AI and the future of programming</p>
-      <h2 class="split">Developers will direct <em class="g">teams of AI agents.</em></h2>
-      <p class="lead rv">Programming is moving from typing every line to planning, guiding and checking intelligent tools. I am building my career for that world.</p>
-      <ul class="beliefs">
-        <li class="rv"><span><b>Agents do the repetitive work.</b> Planning, drafting code and running tests can be handed to AI.</span></li>
-        <li class="rv" style="--d:.08s"><span><b>People own the judgment.</b> Someone still has to understand the problem, review the result and take responsibility.</span></li>
-        <li class="rv" style="--d:.16s"><span><b>Fundamentals matter more.</b> You can only direct an agent well if you understand the code it writes.</span></li>
-      </ul>
-    </div>
-    <div class="console" data-zoom aria-label="Simulated demo of an AI-assisted development workflow">
-      <div class="top"><span>agents / feature-build</span><span class="live"><i></i>SIMULATED DEMO</span></div>
-      <div class="pipe" id="pipe">
-        <div class="ag"><svg viewBox="0 0 24 24"><path d="M5 5h14M5 10h14M5 15h9M5 20h5"/></svg><b>Planner</b><small>idle</small></div>
-        <div class="ag"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg><b>Coder</b><small>idle</small></div>
-        <div class="ag"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg><b>Tester</b><small>idle</small></div>
-        <div class="ag"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-5.5 7-5.5s6 1.5 7 5.500"/></svg><b>Abdulla</b><small>idle</small></div>
-        <div class="ag"><svg viewBox="0 0 24 24"><path d="M12 3c4 3 5 7 4 11l-4 3-4-3c-1-4 0-8 4-11zM9 18l-2 3M15 18l2 3"/><circle cx="12" cy="10" r="1.5"/></svg><b>Deploy</b><small>idle</small></div>
-      </div>
-      <pre class="log" id="log"></pre>
-      <div class="prog"><b id="prog"></b></div>
-    </div>
-  </div>
-</section>
 
 <section id="lab">
   <div class="wrap">
@@ -1101,7 +1073,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
     if(id==='pipe') runAgents();
     if(id==='term') type('sql');
   })},{threshold:.5});
-  ['orbit','kit','sheet','pipe','term'].forEach(function(i){once.observe($('#'+i))});
+  ['orbit','kit','sheet','term'].forEach(function(i){var e=$('#'+i); if(e) once.observe(e)});
 
   // about: pinned, scroll-scrubbed scene
   $$('[data-scrub]').forEach(function(el){
@@ -1177,8 +1149,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
       });
       var kr=bikew.getBoundingClientRect(); if(kr.bottom>-200&&kr.top<vh+200){var kc=(kr.top+kr.height/2-vh/2)/vh; bikew.style.transform='translateX('+(clamp(kc,-1,1)*-22).toFixed(2)+'%)'}
       draws.forEach(function(el){var r=el.getBoundingClientRect(); if(r.bottom<-100||r.top>vh+100) return; el.style.setProperty('--dr',clamp((.92-r.top/vh)/.55,0,1).toFixed(3))});
-      var br=big.getBoundingClientRect();
-      if(br.bottom>-100&&br.top<vh+100){var p=1-(br.top+br.height/2)/vh; big.style.transform='scale('+(.6+clamp(p,0,1.2)*.6).toFixed(4)+')'; big.style.opacity=clamp(1.15-Math.abs(p-.5)*2.1,0,1).toFixed(3)}
+      if(big){var br=big.getBoundingClientRect();
+      if(br.bottom>-100&&br.top<vh+100){var p=1-(br.top+br.height/2)/vh; big.style.transform='scale('+(.6+clamp(p,0,1.2)*.6).toFixed(4)+')'; big.style.opacity=clamp(1.15-Math.abs(p-.5)*2.1,0,1).toFixed(3)}}
     }
     heroFrame(vh);
     aboutFrame(vh);
