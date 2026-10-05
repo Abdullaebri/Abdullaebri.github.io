@@ -658,7 +658,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
   <div class="in">
     <a class="brand" href="#top"><i>AA</i>ALEBRI</a>
     <nav class="links" aria-label="Sections">
-      <a href="#about">About</a><a href="#apps">Work</a><a href="#lab">Skills</a><a href="#vision">Vision</a><a href="#value">Why me</a><a href="#where">Location</a>
+      <a href="#apps">Work</a><a href="#lab">Skills</a><a href="#vision">Vision</a><a href="#value">Why me</a><a href="#where">Location</a>
     </nav>
     <a class="btn sm pri" href="#connect" data-mag><span>Connect</span></a>
   </div>
@@ -683,36 +683,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
   </div>
 </section>
 
-<section id="about" class="pin">
-  <div class="sticky">
-    <div class="ghost" id="abGhost" aria-hidden="true">ABDULLA ALEBRI</div>
-    <div class="wrap abt">
-      <div class="figure" id="abFig">
-        <div class="disc"></div>
-        <svg class="arc" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="96" class="tr"/><circle cx="100" cy="100" r="96" class="pg" id="abArc" pathLength="100"/></svg>
-        <div class="sat"><i></i></div><div class="sat s2"><i></i></div>
-        <div class="orb" aria-hidden="true"><span style="--p:0"><b>HTML</b></span><span style="--p:1"><b>CSS</b></span><span style="--p:2"><b>JavaScript</b></span><span style="--p:3"><b>SQL</b></span><span style="--p:4"><b>Web apps</b></span><span style="--p:5"><b>AI agents</b></span></div>
-        <div class="mono" role="img" aria-label="AA monogram for Abdulla Alebri"><i></i><b>AA</b><small>&lt;developer /&gt;</small></div>
-        <div class="plate"><span>ABU DHABI</span><i></i><span>UAE</span></div>
-      </div>
-      <div class="abtxt">
-        <p class="eye">About</p>
-        <h2 data-scrub>A developer who cares how software <em class="g">feels to use.</em></h2>
-        <p class="lead" data-scrub>I have a solid academic foundation in software design, databases and modern development frameworks. I enjoy building user-focused, scalable and efficient digital solutions with clean code and good practice.</p>
-        <p class="lead" data-scrub>I am looking for an entry-level role where I can contribute to an innovative development team, keep growing my technical skills, and deliver reliable, high-quality software.</p>
-        <div class="facts" id="abFacts">
-          <div class="fact"><span>Name</span><span>Abdulla Sulaiman Alebri</span></div>
-          <div class="fact"><span>Nationality</span><span>Emirati</span></div>
-          <div class="fact"><span>Based in</span><span>Abu Dhabi, UAE</span></div>
-          <div class="fact"><span>Degree</span><span>BSc Information Technology</span></div>
-          <div class="fact"><span>Focus</span><span>Web &amp; app development</span></div>
-          <div class="fact"><span>Status</span><span>Available now</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="pinbar" aria-hidden="true"><b id="abBar"></b></div>
-  </div>
-</section>
 
 
 <section id="apps">
@@ -1105,8 +1075,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:28px
       if(n.nodeType===3){var f=d.createDocumentFragment(); n.textContent.split(/(\s+)/).forEach(function(p){ if(!p) return; if(/^\s+$/.test(p)){f.appendChild(d.createTextNode(' '));return} var w=d.createElement('span'); w.className='sx'; w.textContent=p; f.appendChild(w)}); node.replaceChild(f,n)}
       else if(n.nodeType===1) walk(n)})})(el);
   });
-  var ab=$('#about'), abS=$('.sticky',ab), abFig=$('#abFig'), abArc=$('#abArc'), abGhost=$('#abGhost'), abBar=$('#abBar'), abW=$$('.sx',ab), abF=$$('#abFacts .fact');
+  var ab=$('#about'), abS=ab&&$('.sticky',ab), abFig=$('#abFig'), abArc=$('#abArc'), abGhost=$('#abGhost'), abBar=$('#abBar'), abW=ab?$$('.sx',ab):[], abF=$$('#abFacts .fact');
   function aboutFrame(vh){
+    if(!ab) return;
     var r=ab.getBoundingClientRect(); if(r.bottom<-50||r.top>vh+50) return;
     var pinned=getComputedStyle(abS).position==='sticky', p, ep=clamp(1-r.top/vh,0,1);
     if(reduce) p=1; else if(pinned) p=clamp(-r.top/(r.height-vh),0,1); else p=clamp((vh*.75-r.top)/(r.height*.7),0,1);
